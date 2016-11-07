@@ -1,0 +1,12 @@
+test body
+
+<input type="text" id="msg">
+<input type="button" onclick="send()" value="Send">
+
+
+<script>
+    function send() {
+        var msg = document.getElementById("msg").value;
+        ws.send(msg);
+    }
+</script>
