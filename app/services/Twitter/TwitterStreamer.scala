@@ -15,7 +15,6 @@ import play.api.inject.ApplicationLifecycle
 import com.hunorkovacs.koauth.domain.KoauthRequest
 import com.hunorkovacs.koauth.service.consumer.DefaultConsumerService
 import com.typesafe.config.ConfigFactory
-import controllers.PublisherActor
 import org.json4s._
 import org.json4s.native.JsonMethods._
 
@@ -41,7 +40,6 @@ class TwitterStreamerImpl @Inject() (appLifeCycle: ApplicationLifecycle) extends
   implicit val materializer = ActorMaterializer()
   implicit val formats = DefaultFormats
 
-  private val publisher = system.actorOf(Props[PublisherActor], "publisher")
   private val consumer = new DefaultConsumerService(system.dispatcher)
 
   val body: Map[String, String] = Map("track" -> "boston")
